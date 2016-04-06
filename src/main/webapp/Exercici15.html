@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <title>Ejercicio 15</title>
+    <style>
+        table, th , td  {
+            border: 1px solid grey;
+            border-collapse: collapse;
+            padding: 5px;
+        }
+
+        form input.ng-pristine, form select.ng-pristine {
+             background-color: lightcoral;
+        }
+        form input.ng-dirty, form select.ng-dirty {
+            background-color: lightgreen;
+        }
+    </style>
+</head>
+<body ng-app="showJugador" ng-controller="ctrl">
+<h1>Ejercicio 15</h1>
+<form name="jugadorForm">
+    <table>
+        <tr><td colspan="2"><h3>Rellena los datos del Jugador:</h3></td></tr>
+        <tr><td>Nombre:</td><td><input type="text" name="nombre" ng-model="nombre" required></td></tr>
+        <tr><td>Fecha de Nacimiento:</td><td><input type="date" name="fechaNacimiento" ng-model="fechaNacimiento"></td></tr>
+        <tr><td>Canastas Totales:</td><td><input type="number" min="0" name="canastasTotales" ng-model="canastasTotales"></td></tr>
+        <tr><td>Asistencias Totales:</td><td><input type="number" min="0" name="asistenciasTotales" ng-model="asistenciasTotales"></td></tr>
+        <tr><td>Rebotes Totales:</td><td><input type="number" min="0" name="rebotesTotales" ng-model="rebotesTotales"></td></tr>
+        <tr>
+            <td>Posicion en el Campo:</td>
+            <td><select name="selectPosicion" ng-model="selectPosicion" ng-options="x for x in posiciones" required></select></td>
+        </tr>
+        <tr>
+            <td>Equipo:</td>
+            <td><select name="selectEquipo" ng-model="selectEquipo" ng-options="x for x in equipos"  required></select></td>
+        </tr>
+        <tr><td colspan="2"><h3>Datos Introducidos:</h3></td></tr>
+        <tr><td>Nombre:</td><td>{{nombre}}</td><td>validez:{{jugadorForm.nombre.$valid}}</td></tr>
+        <tr><td>Fecha de Nacimiento:</td><td>{{fechaNacimiento}}</td>
+            <td>
+                <span ng-show="jugadorForm.fechaNacimiento.$untouched || jugadorForm.fechaNacimiento.$pristine">Introducir Fecha</span>
+                <span>validez:{{jugadorForm.fechaNacimiento.$dirty}}</span>
+            </td></tr>
+        <tr><td>Canastas Totales:</td><td>{{canastasTotales}}</td><td>validez:{{jugadorForm.canastasTotales.$dirty}}</td></tr>
+        <tr><td>Asistencias Totales:</td><td>{{asistenciasTotales}}</td><td>validez:{{jugadorForm.asistenciasTotales.$dirty}}</td></tr>
+        <tr><td>Rebotes Totales:</td><td>{{rebotesTotales}}</td><td>validez:{{jugadorForm.rebotesTotales.$dirty}}</td></tr>
+        <tr><td>Posicion en el Campo:</td><td>{{selectPosicion}}</td><td>validez:{{jugadorForm.selectPosicion.$valid}}</td></tr>
+        <tr><td>Equipo:</td><td>{{selectEquipo}}</td><td>validez:{{jugadorForm.selectEquipo.$valid}}</td></tr>
+    </table>
+</form>
+<script>
+    var app = angular.module('showJugador',[]);
+    app.controller('ctrl',function($scope){
+        $scope.equipos = ["FC Barcelona","Real Madrid","Joventut Badalona"];
+        $scope.posiciones = ["base","escolta","alero","ala-pivot","pivot"];
+    });
+</script>
+</body>
+</html>

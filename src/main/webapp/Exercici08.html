@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <title>Ejercicio 8</title>
+</head>
+<body>
+<h1>Ejercicio 8</h1>
+<div>Datos de los jugadores en la BDD Jhipster:</div>
+    <div ng-app="jugadorsApp" ng-controller="jugadorsCtrl">
+        Introduce la Id del Equipo:
+        <input type="text" ng-model="idEquipo" ng-change="getJugadors()">
+        <table border="1" width="100%">
+            <tr>
+                <th ng-click="orderByMe('nombre')">nombre</th>
+                <th ng-click="orderByMe('fechaNacimiento')">fechaNacimiento</th>
+                <th ng-click="orderByMe('canastasTotales')">canastasTotales</th>
+                <th ng-click="orderByMe('asistenciasTotales')">asistenciasTotales</th>
+                <th ng-click="orderByMe('rebotesTotales')">rebotesTotales</th>
+                <th ng-click="orderByMe('posicionCampo')">posicionCampo</th>
+                <th ng-click="orderByMe('equipo')">equipo</th>
+            </tr>
+            <tr ng-repeat="x in jugadorsResult | orderBy:myOrderBy">
+                <td>{{x.nombre}}</td>
+                <td>{{x.fechaNacimiento}}</td>
+                <td>{{x.canastasTotales}}</td>
+                <td>{{x.asistenciasTotales}}</td>
+                <td>{{x.rebotesTotales}}</td>
+                <td>{{x.posicionCampo}}</td>
+                <td>{{x.equipo}}</td>
+            </tr>
+        </table>
+    </div>
+<script>
+    var app = angular.module('jugadorsApp', []);
+    app.controller('jugadorsCtrl', function($scope, $http) {
+        $scope.idEquipo=1;
+        $scope.getJugadors = function() {
+            if($scope.idEquipo != ""){
+                $http.get("api/equipos/"+$scope.idEquipo+"/jugadors").then(function (response) {
+                        $scope.jugadorsResult = response.data;
+                });
+            }
+        }
+        $scope.orderByMe = function (x) {
+            $scope.myOrderBy = x;
+        }
+    });
+</script>
+</body>
+</html>

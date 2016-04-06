@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <title>Ejercicio 3</title>
+</head>
+<body>
+<h1>Ejercicio 3</h1>
+<div ng-app=""
+     ng-init="jugador={
+     nombre:'Juan Rodriguez',
+     fechaNacimiento:'1995-01-13',
+     canastasTotales:10,
+     asistenciasTotales:5,
+     rebotesTotales:25,
+     posicionCampo:'alero',
+     equipo:'Fc Barcelona'
+     }">
+    <article><h3>Datos Inicializados:</h3></article>
+    <span>Nombre<h4>{{jugador.nombre}}</h4></span>
+    <span>Fecha de Nacimiento:<h4>{{jugador.fechaNacimiento}}</h4></span>
+    <span>Canastas Totales:<h4>{{jugador.canastasTotales}}</h4></span>
+    <span>Asistencias Totales:<h4>{{jugador.asistenciasTotales}}</h4></span>
+    <span>Rebotes Totales:<h4>{{jugador.rebotesTotales}}</h4></span>
+    <span>Posicion en el Campo:<h4>{{jugador.posicionCampo}}</h4></span>
+    <span>Equipo:<h4>{{jugador.equipo}}</h4></span>
+</div>
+</body>
+</html>

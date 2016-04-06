@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <title>Ejercicio 5</title>
+</head>
+<body>
+    <h1>Ejercicio 5</h1>
+    <div ng-app="showJugador" ng-controller="ctrlJugador">
+        <article><h3>Datos Inicializados en Array:</h3></article>
+        <table border="1" width="100%">
+            <tr>
+                <th ng-click="orderByMe('nombre')">nombre</th>
+                <th ng-click="orderByMe('fechaNacimiento')">fechaNacimiento</th>
+                <th ng-click="orderByMe('canastasTotales')">canastasTotales</th>
+                <th ng-click="orderByMe('asistenciasTotales')">asistenciasTotales</th>
+                <th ng-click="orderByMe('rebotesTotales')">rebotesTotales</th>
+                <th ng-click="orderByMe('posicionCampo')">posicionCampo</th>
+                <th ng-click="orderByMe('equipo')">equipo</th>
+            </tr>
+            <tr ng-repeat="x in jugadores | orderBy:myOrderBy">
+                <td>{{x.nombre}}</td>
+                <td>{{x.fechaNacimiento}}</td>
+                <td>{{x.canastasTotales}}</td>
+                <td>{{x.asistenciasTotales}}</td>
+                <td>{{x.rebotesTotales}}</td>
+                <td>{{x.posicionCampo}}</td>
+                <td>{{x.equipo}}</td>
+            </tr>
+        </table>
+
+    </div>
+    <script>
+        var app = angular.module('showJugador',[]);
+        app.controller('ctrlJugador',function($scope){
+            $scope.jugadores =
+                [{nombre:'Juan Rodriguez',fechaNacimiento:'1995-01-13',canastasTotales:10,asistenciasTotales:5,rebotesTotales:25,posicionCampo:'alero',equipo:'Fc Barcelona'},
+                {nombre:'Xavi Garcia',fechaNacimiento:'1990-03-15',canastasTotales:1,asistenciasTotales:3,rebotesTotales:50,posicionCampo:'pivot',equipo:'Joventut Badalona'},
+                {nombre:'Manuel Diaz',fechaNacimiento:'1985-02-20',canastasTotales:19,asistenciasTotales:50,rebotesTotales:2,posicionCampo:'base',equipo:'Real Madrid'}];
+            $scope.orderByMe = function(x) {
+                $scope.myOrderBy = x;
+            }
+        });
+    </script>
+</body>
+</html>

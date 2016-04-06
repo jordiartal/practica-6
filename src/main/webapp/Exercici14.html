@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <title>Ejercicio 14</title>
+    <style>
+        table, th , td  {
+            border: 1px solid grey;
+            border-collapse: collapse;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+<h1>Ejercicio 14</h1>
+<div>Datos de los jugadores en la BDD Jhipster[ordenar por diversos atributos]:</div>
+<div ng-app="jugadorsApp" ng-controller="jugadorsCtrl">
+
+    <table border="1" width="100%">
+        <tr>
+            <th ng-click="orderByMe('nombre')">nombre</th>
+            <th ng-click="orderByMe('fechaNacimiento')">fechaNacimiento</th>
+            <th ng-click="orderByMe('canastasTotales')">canastasTotales</th>
+            <th ng-click="orderByMe('asistenciasTotales')">asistenciasTotales</th>
+            <th ng-click="orderByMe('rebotesTotales')">rebotesTotales</th>
+            <th ng-click="orderByMe('posicionCampo')">posicionCampo</th>
+            <th ng-click="orderByMe('equipo')">equipo</th>
+        </tr>
+        <tr ng-repeat="x in jugadorsResult | orderBy:myOrderBy | filter:jugadorAtributos">
+            <td ng-if="$odd" style="background-color:#f1f1f1">{{x.nombre}}</td>
+            <td ng-if="$even" >{{x.nombre}}</td>
+            <td ng-if="$odd" style="background-color:#f1f1f1">{{x.fechaNacimiento}}</td>
+            <td ng-if="$even">{{x.fechaNacimiento}}</td>
+            <td ng-if="$odd" style="background-color:#f1f1f1">{{x.canastasTotales}}</td>
+            <td ng-if="$even" >{{x.canastasTotales}}</td>
+            <td ng-if="$odd" style="background-color:#f1f1f1">{{x.asistenciasTotales}}</td>
+            <td ng-if="$even" >{{x.asistenciasTotales}}</td>
+            <td ng-if="$odd" style="background-color:#f1f1f1">{{x.rebotesTotales}}</td>
+            <td ng-if="$even" >{{x.rebotesTotales}}</td>
+            <td ng-if="$odd" style="background-color:#f1f1f1">{{x.posicionCampo}}</td>
+            <td ng-if="$even" >{{x.posicionCampo}}</td>
+            <td ng-if="$odd" style="background-color:#f1f1f1">{{x.equipo}}</td>
+            <td ng-if="$even" >{{x.equipo}}</td>
+        </tr>
+    </table>
+
+</div>
+
+<script>
+    var app = angular.module('jugadorsApp', []);
+    app.controller('jugadorsCtrl', function($scope, $http) {
+        $http.get("http://127.0.0.1:8080/api/jugadors")
+            .then(function (response) {
+                $scope.jugadorsResult = response.data;
+            });
+        $scope.orderByMe = function(x) {
+            $scope.myOrderBy = x;
+        }
+    });
+</script>
+</body>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <title>Ejercicio 6</title>
+</head>
+<body>
+<h1>Ejercicio 6</h1>
+<div ng-app="showJugador" ng-controller="ctrl">
+    <h3>Rellena los datos del Jugador:</h3>
+    <p>Nombre:<input type="text" ng-model="nombre"></p>
+
+    <article><h3>Datos Introducidos:</h3></article>
+    <span>Nombre<h4>{{nombre}}</h4></span>
+
+</div>
+<script>
+    var app = angular.module('showJugador',[]);
+    app.controller('ctrl',function($scope){
+        $scope.nombre = "Juan Nadie";
+    });
+</script>
+</body>
+</html>

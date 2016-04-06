@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <title>Ejercicio 2</title>
+</head>
+<body>
+<h1>Ejercicio 2</h1>
+<div ng-app="showJugador" ng-controller="ctrl">
+    <h3>Rellena los datos del Jugador:</h3>
+    <p>Nombre:<input type="text" ng-model="nombre"></p>
+    <p>Fecha de Nacimiento:<input type="date" ng-model="fechaNacimiento"></p>
+    <p>Canastas Totales:<input type="number" ng-model="canastasTotales"></p>
+    <p>Asistencias Totales:<input type="number" ng-model="asistenciasTotales"></p>
+    <p>Rebotes Totales:<input type="number" ng-model="rebotesTotales"></p>
+    <p>Posicion en el Campo:
+        <select ng-model="selectPosicion" ng-options="x for x in posiciones"></select>
+    </p>
+    <p>Equipo:
+        <select ng-model="selectEquipo" ng-options="x for x in equipos"></select>
+    </p>
+    <article><h3>Datos Introducidos:</h3></article>
+    <span>Nombre<h4>{{nombre}}</h4></span>
+    <span>Fecha de Nacimiento:<h4>{{fechaNacimiento}}</h4></span>
+    <span>Canastas Totales:<h4>{{canastasTotales}}</h4></span>
+    <span>Asistencias Totales:<h4>{{asistenciasTotales}}</h4></span>
+    <span>Rebotes Totales:<h4>{{rebotesTotales}}</h4></span>
+    <span>Posicion en el Campo:<h4>{{selectPosicion}}</h4></span>
+    <span>Equipo:<h4>{{selectEquipo}}</h4></span>
+</div>
+<script>
+    var app = angular.module('showJugador',[]);
+    app.controller('ctrl',function($scope){
+        $scope.nombre = "José Martinez";
+        $scope.fechaNacimiento = new Date (1990,00,23);
+        $scope.canastasTotales = 5;
+        $scope.asistenciasTotales = 10;
+        $scope.rebotesTotales = 15;
+        $scope.equipos = ["FC Barcelona","Real Madrid","Joventut Badalona"];
+        $scope.posiciones = ["base","escolta","alero","ala-pivot","pivot"];
+        $scope.selectPosicion = $scope.posiciones[3];
+        $scope.selectEquipo = $scope.equipos[2];
+    });
+</script>
+</body>
+</html>

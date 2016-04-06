@@ -1,0 +1,15 @@
+version: '2'
+services:
+    practica6-app:
+        image: practica6
+        external_links:
+            - practica6-mysql:mysql
+        environment:
+            - SPRING_PROFILES_ACTIVE=prod
+            - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/practica6?useUnicode=true&characterEncoding=utf8&useSSL=false
+        ports:
+            - 8080:8080
+    practica6-mysql:
+        extends:
+            file: mysql.yml
+            service: practica6-mysql

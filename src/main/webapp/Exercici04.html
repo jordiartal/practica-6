@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <title>Ejercicio 4</title>
+</head>
+<body>
+<h1>Ejercicio 4</h1>
+<div ng-app=""
+     ng-init="jugadores=[
+        {nombre:'Juan Rodriguez',fechaNacimiento:'1995-01-13',canastasTotales:10,asistenciasTotales:5,rebotesTotales:25,posicionCampo:'alero',equipo:'Fc Barcelona'},
+        {nombre:'Xavi Garcia',fechaNacimiento:'1990-03-15',canastasTotales:1,asistenciasTotales:3,rebotesTotales:50,posicionCampo:'pivot',equipo:'Fc Barcelona'},
+        {nombre:'Jose Diaz',fechaNacimiento:'1985-02-20',canastasTotales:19,asistenciasTotales:50,rebotesTotales:2,posicionCampo:'base',equipo:'Fc Barcelona'}
+]">
+    <article><h3>Datos Inicializados en Array:</h3></article>
+    <ul>
+        <li ng-repeat="x in jugadores">
+            {{'Nombre:'+x.nombre+' | Fecha Nac.:'+x.fechaNacimiento+' | Canastas:'+x.canastasTotales+' | Asistencias:'+x.asistenciasTotales+' | Rebotes:'+x.rebotesTotales+' | Posicion:'+x.posicionCampo+' | Equipo:'+x.equipo}}
+        </li>
+    </ul>
+</div>
+</body>
+</html>
